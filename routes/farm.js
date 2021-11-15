@@ -13,4 +13,11 @@ export const initFarmRoutes = (express) => {
     const farm = await Farm.findById(id, { __v: 0 }).populate("products");
     res.send(farm);
   });
+
+  express.post("/farms", async (req, res) => {
+    console.log(req.body);
+    const farm = new Farm(req.body);
+    await farm.save();
+    res.send({ data: "success" });
+  });
 };

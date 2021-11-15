@@ -24,6 +24,9 @@ mongoose
 
 const app = express();
 
+// To parse incoming JSON in POST request body:
+app.use(express.json());
+
 initFarmRoutes(app);
 initProductRoutes(app);
 
