@@ -40,4 +40,13 @@ export const initFarmRoutes = (express) => {
 
     res.send({ data: "success", newProduct: newProduct });
   });
+
+  express.delete("/farms/:id", async (req, res) => {
+    console.log("DELETE /farms/:id");
+    const { id } = req.params;
+    // use Middleware
+    // DELETE ALL ASSOCIATED PRODUCTS AFTER A FARM IS DELETED
+    const deletedFarm = await Farm.findByIdAndDelete(id);
+    res.send({ data: "success", deletedFarm: deletedFarm });
+  });
 };
