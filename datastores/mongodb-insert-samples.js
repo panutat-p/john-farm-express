@@ -37,6 +37,7 @@ const farm = new Farm({
 
 farm.products = [];
 farm.products.push(product);
+product.farm = farm;
 
 product.save().then((res) => {
   console.log(res);
